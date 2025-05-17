@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib url="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,11 @@
 </header>
 
 <!---add details functionality--->
-
+<div class="container">
+    <h2>Payment Details</h2>
+    <h3>User Information</h3>
+    <p>Username:</p>
+    <p>Your Payments</p>
+</div>
 </body>
 </html>
