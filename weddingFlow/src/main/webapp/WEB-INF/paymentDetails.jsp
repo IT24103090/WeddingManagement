@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib url="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,13 +19,23 @@
         <% } %>
     </nav>
 </header>
-
-<!---add details functionality--->
 <div class="container">
     <h2>Payment Details</h2>
     <h3>User Information</h3>
-    <p>Username:</p>
-    <p>Your Payments</p>
+    <p>Username: ${sessionScope.username}</p>
+    <p>User Type: ${sessionScope.userType}</p>
+    <h3>Your Payments</h3>
+    <c:forEach var="booking" items="${bookings}">
+        <p>Order ID: ${booking.orderId}</p>
+        <p>Item: ${booking.item}</p>
+        <p>Price: Rs.${booking.price}</p>
+        <p>Payment Status: ${booking.status}</p>
+        <hr>
+    </c:forEach>
+    <c:if test="${empty bookings}">
+        <p>No payment records found.</p>
+    </c:if>
+    <a href="dashboard">Back to Dashboard</a>
 </div>
 </body>
 </html>
