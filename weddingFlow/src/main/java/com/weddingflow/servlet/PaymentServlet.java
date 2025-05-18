@@ -1,9 +1,13 @@
 package com.weddingflow.servlet;
 
+import com.weddingflow.model.Booking;
+import com.weddingflow.util.FileUtil;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class PaymentServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,5 +32,27 @@ public class PaymentServlet {
             return;
         }
 
+        //check and retrieve pending bookings into the system
+        List<Booking> pendingBookings = (List<Booking>) request.getSession().getAttribute("pendingBookings");
+        if (pendingBookings == null || pendingBookings.isEmpty()) {
+            request.setAttribute("error", "No pending bookings found.");
+            request.getRequestDispatcher("payment.jsp").forward(request, response);
+            return;
+        }
 
+        //write bookings to the file bookings.txt
+        for (Booking booking : pendingBookings) {
+            booking.setStatus("Paid");
+            String bookingData = booking.getUsername() + ":" + booking.getOrderId() + ":" + booking.getItem() + ":" +
+                    booking.getQuantity() + ":" + booking.getPrice() + ":" + booking.getStatus() + ":" +
+                    booking.getEventType() + ":" + booking.getEventDate();
+            FileUtil.writeFile(FileUtil.getBookingFile(), bookingData); // Changed from appendFile to writeFile
+        }
+
+        //clear attributes and redirect to dashboard
+        request.getSession().removeAttribute("pendingBookings");
+        request.getSession().removeAttribute("selectedVendors");
+
+        response.sendRedirect("dashboard");
+    }
 }
