@@ -21,6 +21,16 @@ public class FileUtil {
         }
         return lines;
     }
+    public static LinkedList<String> readFileAsLinkedList(String filePath) throws IOException {
+        LinkedList<String> lines = new LinkedList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        }
+        return lines;
+    }
 
     public static void writeFile(String filePath, String data) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
@@ -28,6 +38,24 @@ public class FileUtil {
             writer.newLine();
         }
     }
+    public static void writeFile(String filePath, List<String> data) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            for (String line : data) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+    }
+    public static void overwriteFile(String filePath, LinkedList<String> lines) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            String[] lineArray = lines.toArray(new String[0]);
+            for (String line : lineArray) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+    }
+
 
     public static String getUserFile() { return USER_FILE; }
     public static String getVendorFile() { return VENDOR_FILE; }
