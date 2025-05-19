@@ -1,0 +1,43 @@
+package com.weddingflow.servlet;
+
+import com.weddingflow.model.Message;
+import com.weddingflow.util.FileUtil;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+@WebServlet("/contact")
+public class ContactServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = (String) request.getSession().getAttribute("username");
+        List<Message> messages = new ArrayList<>();
+        List<String> messageLines = FileUtil.readFile(FileUtil.getMessageFile());
+
+        for (String line : messageLines) {
+            String[] parts = line.split(":");
+            if (parts[0].equals(username)) {
+                messages.add(new Message(parts[0], parts[1]));
+            }
+        }
+
+        request.setAttribute("messages", messages);
+        request.getRequestDispatcher("contact.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = (String) request.getSession().getAttribute("username");
+        String message = request.getParameter("message");
+
+        if (username != null && message != null && !message.trim().isEmpty()) {
+            FileUtil.writeFile(FileUtil.getMessageFile(), username + ":" + message);
+        }
+        response.sendRedirect("contact");
+    }
+}

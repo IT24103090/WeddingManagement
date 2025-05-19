@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Payment Details - WeddingFlow</title>
+    <title>Order Details - WeddingFlow</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -20,20 +20,21 @@
     </nav>
 </header>
 <div class="container">
-    <h2>Payment Details</h2>
+    <h2>Order Details</h2>
     <h3>User Information</h3>
     <p>Username: ${sessionScope.username}</p>
     <p>User Type: ${sessionScope.userType}</p>
-    <h3>Your Payments</h3>
+    <h3>Your Orders</h3>
     <c:forEach var="booking" items="${bookings}">
         <p>Order ID: ${booking.orderId}</p>
         <p>Item: ${booking.item}</p>
-        <p>Price: Rs.${booking.price}</p>
-        <p>Payment Status: ${booking.status}</p>
+        <p>Event Type: ${booking.eventType}</p>
+        <p>Event Date: ${booking.eventDate}</p>
+        <p>Quantity: ${booking.quantity}</p>
         <hr>
     </c:forEach>
     <c:if test="${empty bookings}">
-        <p>No payment records found.</p>
+        <p>No orders found.</p>
     </c:if>
     <a href="dashboard">Back to Dashboard</a>
 </div>
