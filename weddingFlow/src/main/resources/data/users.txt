@@ -5,3 +5,5 @@ kasuni:MTIzNDU2:Basic
 nipun:MTIzNDU2:Basic
 tuio:MTExMTEx:Basic
 nininn:MTIzNDU2:Basic
+user:MTIzNDU2:Basic
+
