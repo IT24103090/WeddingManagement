@@ -3,3 +3,4 @@ add1:MTIzNDU2:Admin
 meth:123456:Admin
 kasuni:MTIzNDU2:Basic
 nipun:MTIzNDU2:Basic
+tuio:MTExMTEx:Basic
