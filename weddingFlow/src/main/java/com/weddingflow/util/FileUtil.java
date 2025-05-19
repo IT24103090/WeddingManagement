@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileUtil {
-    private static final String USER_FILE = "C:\\Users\\DELL\\Desktop\\Wedding App\\weddingFlow\\src\\main\\resources\\data\\users.txt";
-    private static final String VENDOR_FILE = "C:\\Users\\DELL\\Desktop\\Wedding App\\weddingFlow\\src\\main\\resources\\data\\vendors.txt";
-    private static final String BOOKING_FILE = "C:\\Users\\DELL\\Desktop\\Wedding App\\weddingFlow\\src\\main\\resources\\data\\bookings.txt";
-    private static final String REVIEW_FILE = "C:\\Users\\DELL\\Desktop\\Wedding App\\weddingFlow\\src\\main\\resources\\data\\reviews.txt";
-    private static final String MESSAGE_FILE = "C:\\Users\\DELL\\Desktop\\Wedding App\\weddingFlow\\src\\main\\resources\\data\\messages.txt";
+    private static final String USER_FILE = "C:\\Users\\User\\IdeaProjects\\WeddingManagement\\weddingFlow\\src\\main\\resources\\data\\users.txt";
+    private static final String VENDOR_FILE = "C:\\Users\\User\\IdeaProjects\\WeddingManagement\\weddingFlow\\src\\main\\resources\\data\\vendors.txt";
+    private static final String BOOKING_FILE = "C:\\Users\\User\\IdeaProjects\\WeddingManagement\\weddingFlow\\src\\main\\resources\\data\\bookings.txt";
+    private static final String REVIEW_FILE = "C:\\Users\\User\\IdeaProjects\\WeddingManagement\\weddingFlow\\src\\main\\resources\\data\\reviews.txt";
+    private static final String MESSAGE_FILE = "C:\\Users\\User\\IdeaProjects\\WeddingManagement\\weddingFlow\\src\\main\\resources\\data\\messages.txt";
 
     public static List<String> readFile(String filePath) throws IOException {
         List<String> lines = new ArrayList<>();

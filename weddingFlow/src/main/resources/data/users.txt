@@ -2,4 +2,8 @@ sasi:MTIzNDU2:Basic
 add1:MTIzNDU2:Admin
 meth:123456:Admin
 kasuni:MTIzNDU2:Basic
+nipun:MTIzNDU2:Basic
+tuio:MTExMTEx:Basic
+nininn:MTIzNDU2:Basic
 user:MTIzNDU2:Basic
+
